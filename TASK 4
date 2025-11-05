@@ -1,0 +1,320 @@
+import QtQuick
+import QtQuick.Controls
+
+Rectangle {
+    id: desktop_1
+    width: 1440
+    height: 1024
+    color: "#ffffff"
+    property alias name1Text: name1.text
+    property alias cancelText: cancel.text
+    property alias submitText: submit.text
+    property alias message1Text: message1.text
+    property alias emailText: email.text
+    property alias contact_UsText: contact_Us.text
+    property alias phoneText: phone.text
+    property alias phone1Text: phone1.text
+    property alias email1Text: email1.text
+    property alias messageText: message.text
+    property alias nameText: name.text
+
+    Rectangle {
+        id: rectangle_1
+        width: 500
+        height: 908
+        color: "#ffffff"
+        border.color: "#000000"
+        border.width: 1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 482
+        anchors.topMargin: 58
+    }
+
+    Text {
+        id: contact_Us
+        width: 263
+        height: 58
+        color: "#000000"
+        text: qsTr("Contact Us ")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 589
+        anchors.topMargin: 93
+        font.pixelSize: 48
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: name
+        width: 69
+        height: 29
+        color: "#000000"
+        text: qsTr("Name")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 487
+        anchors.topMargin: 185
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: email
+        width: 65
+        height: 29
+        color: "#000000"
+        text: qsTr("Email")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 489
+        anchors.topMargin: 238
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: phone
+        width: 76
+        height: 29
+        color: "#000000"
+        text: qsTr("Phone")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 487
+        anchors.topMargin: 286
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: message
+        width: 108
+        height: 29
+        color: "#000000"
+        text: qsTr("Message")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 492
+        anchors.topMargin: 384
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Rectangle {
+        id: task4_NameInput
+        width: 400
+        height: 44
+        color: "#ffffff"
+        border.color: "#d9d9d9"
+        border.width: 1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 571
+        anchors.topMargin: 175
+    }
+
+    Text {
+        id: name1
+        width: 68
+        height: 29
+        color: "#dbd5d5"
+        text: qsTr("Name")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 581
+        anchors.topMargin: 182
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Light
+        font.family: "Inter"
+    }
+
+    Rectangle {
+        id: task4_EmailInput
+        width: 400
+        height: 44
+        color: "#ffffff"
+        border.color: "#d9d9d9"
+        border.width: 1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 569
+        anchors.topMargin: 228
+    }
+
+    Rectangle {
+        id: task4_PhoneInput
+        width: 400
+        height: 44
+        color: "#ffffff"
+        border.color: "#d9d9d9"
+        border.width: 1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 578
+        anchors.topMargin: 287
+    }
+
+    Rectangle {
+        id: task4_MessageInput
+        width: 400
+        height: 100
+        color: "#ffffff"
+        border.color: "#d9d9d9"
+        border.width: 1
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 521
+        anchors.topMargin: 435
+    }
+
+    Rectangle {
+        id: task4_SubmitBtn
+        width: 160
+        height: 74
+        color: "#59c2ff"
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 546
+        anchors.topMargin: 724
+    }
+
+    Rectangle {
+        id: task4_CancelBtn
+        width: 160
+        height: 74
+        color: "#b7b9ba"
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 773
+        anchors.topMargin: 724
+    }
+
+    Text {
+        id: submit
+        width: 85
+        height: 29
+        color: "#000000"
+        text: qsTr("Submit")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 584
+        anchors.topMargin: 746
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: cancel
+        width: 83
+        height: 29
+        color: "#000000"
+        text: qsTr("Cancel")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 812
+        anchors.topMargin: 746
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Bold
+        font.family: "Inter"
+    }
+
+    Text {
+        id: email1
+        width: 61
+        height: 29
+        color: "#dbd5d5"
+        text: qsTr("Email")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 571
+        anchors.topMargin: 238
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Light
+        font.family: "Inter"
+    }
+
+    Text {
+        id: phone1
+        width: 73
+        height: 29
+        color: "#dbd5d5"
+        text: qsTr("Phone")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 581
+        anchors.topMargin: 294
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Light
+        font.family: "Inter"
+    }
+
+    Text {
+        id: message1
+        width: 103
+        height: 29
+        color: "#dbd5d5"
+        text: qsTr("Message")
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.leftMargin: 530
+        anchors.topMargin: 448
+        font.pixelSize: 24
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignTop
+        wrapMode: Text.NoWrap
+        font.weight: Font.Light
+        font.family: "Inter"
+    }
+}
+
+/*##^##
+Designer {
+    D{i:0;uuid:"bc7b0c70-7356-5722-bcbc-a9e32975173d"}D{i:1;uuid:"a164412a-ffef-5b3a-a1b4-0f4e53046362"}
+D{i:2;uuid:"e9fd9dcc-aaa2-5084-9699-a816f04df439"}D{i:3;uuid:"ed0bfe73-4154-51de-a4ba-df60bcf60b59"}
+D{i:4;uuid:"5c397327-a83b-5d96-95da-6b23ac9aafad"}D{i:5;uuid:"61296e88-d414-53c8-9526-d5547be19bda"}
+D{i:6;uuid:"53b93181-3273-5f5e-8cfa-33475cf5abac"}D{i:7;uuid:"36be5267-7276-5f13-985d-68d63eaca3bf"}
+D{i:8;uuid:"ef4602bd-d182-57f6-88cb-fca904d3dd1e"}D{i:9;uuid:"110f5d8c-5d30-531b-b778-2aca5c38a693"}
+D{i:10;uuid:"fc54a9e4-b187-5b29-8b15-06bb5b4b8f2c"}D{i:11;uuid:"bb3702d0-bbab-58ab-9295-29bc2d33f657"}
+D{i:12;uuid:"c42fded0-93af-5754-b61a-ec790764bee6"}D{i:13;uuid:"b5674341-5d32-596d-ab2f-731adefeb8f6"}
+D{i:14;uuid:"4a44478e-12a2-5eac-bf19-9707dc8ffe89"}D{i:15;uuid:"18ee387a-0db4-5052-98a6-71101653876e"}
+D{i:16;uuid:"9978f636-f18a-51a7-86b9-c9ba62d426b8"}D{i:17;uuid:"cfbb7cee-4cb3-59ec-8c05-a27ada3e91ba"}
+D{i:18;uuid:"94206b40-19bd-5b88-aafb-1ce5d4dfd433"}
+}
+##^##*/
