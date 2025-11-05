@@ -1,0 +1,140 @@
+import sys
+
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QIntValidator
+from PySide6.QtWidgets import (
+    QApplication, QWidget, QPushButton, QLabel, QLineEdit,
+    QVBoxLayout, QHBoxLayout
+)
+
+# (falls back gracefully if not installed) 
+try:
+    import pandas as pd
+    USE_PANDAS = True
+    df = pd.DataFrame(columns=["name", "age"])
+except Exception:
+    USE_PANDAS = False
+
+    class SimpleDataFrame:
+        """Tiny DataFrame-like fallback so no pandas is required."""
+        def __init__(self, columns):
+            self.columns = list(columns)
+            self._rows = []
+
+        def append(self, row_dict):
+            self._rows.append([row_dict.get(col) for col in self.columns])
+
+        def tail(self, n=5):
+            return self._rows[-n:]
+
+        def __len__(self):
+            return len(self._rows)
+
+        def __str__(self):
+            # pretty print last 10 rows
+            width = {c: max(len(c), 10) for c in self.columns}
+            header = " | ".join(c.ljust(width[c]) for c in self.columns)
+            sep = "-+-".join("-" * width[c] for c in self.columns)
+            lines = [header, sep]
+            for r in self._rows[-10:]:
+                lines.append(" | ".join(str(v).ljust(width[c]) for v, c in zip(r, self.columns)))
+            return "\n".join(lines)
+
+    df = SimpleDataFrame(columns=["name", "age"])
+
+# --- Build UI (based on your template) ---
+app = QApplication(sys.argv)
+window = QWidget()
+window.setWindowTitle("Student Form")
+
+# Widgets
+title_label = QLabel("Enter student info:")
+title_label.setAlignment(Qt.AlignLeft)
+
+name_label = QLabel("Name")
+name_input = QLineEdit()
+name_input.setPlaceholderText("Enter your name")
+
+age_label = QLabel("Age")
+age_input = QLineEdit()
+age_input.setPlaceholderText("Enter your age")
+age_input.setValidator(QIntValidator(0, 150, age_input))  # only allow 0..150
+
+submit_button = QPushButton("Submit")
+clear_button = QPushButton("Clear")
+result_label = QLabel("")  # for inline feedback
+
+# --- Functions required by your assignment ---
+
+def submit_form():
+    """
+    Prints the name and age to console, validates inputs,
+    and saves into a DataFrame (pandas if available; otherwise fallback).
+    """
+    name = name_input.text().strip()
+    age_text = age_input.text().strip()
+
+    age_val = int(age_text) if age_text.isdigit() else 0
+
+    # Validation
+    if not name:
+        msg = "Please enter a name"
+        print(msg)
+        result_label.setText(msg)
+        return
+
+    if age_val == 0:
+        msg = "Please enter an age"
+        print(msg)
+        result_label.setText(msg)
+        return
+
+    # Print to console (as required)
+    print(f"Submitted -> Name: {name}, Age: {age_val}")
+
+    if USE_PANDAS:
+        global df  # update the pandas df
+        df.loc[len(df)] = {"name": name, "age": age_val}
+        print("Saved row. Latest rows:")
+        print(df.tail(5))
+    else:
+        df.append({"name": name, "age": age_val})
+        print("Saved row. Latest rows:")
+        print(df)  # pretty string from fallback
+
+    # UI feedback
+    result_label.setText(f"Saved: {name} ({age_val})")
+
+def clear_form():
+    """Clears all inputs and feedback label."""
+    name_input.clear()
+    age_input.clear()
+    result_label.setText("")
+
+submit_button.clicked.connect(submit_form)
+clear_button.clicked.connect(clear_form)
+
+form_layout = QVBoxLayout()
+form_layout.addWidget(title_label)
+
+row1 = QHBoxLayout()
+row1.addWidget(name_label)
+row1.addWidget(name_input)
+form_layout.addLayout(row1)
+
+row2 = QHBoxLayout()
+row2.addWidget(age_label)
+row2.addWidget(age_input)
+form_layout.addLayout(row2)
+
+buttons = QHBoxLayout()
+buttons.addWidget(submit_button)
+buttons.addWidget(clear_button)
+form_layout.addLayout(buttons)
+
+form_layout.addWidget(result_label)
+
+window.setLayout(form_layout)
+window.show()
+
+sys.exit(app.exec())
